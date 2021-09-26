@@ -6,9 +6,11 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     ingress.kubernetes.io/ssl-redirect: "false"
+    cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   rules:
-    - http:
+    - host: web.kube.5570w.rconway.uk
+      http:
         paths:
           - path: /
             pathType: Prefix
@@ -17,3 +19,7 @@ spec:
                 name: myserver
                 port:
                   number: 80
+  tls: # < placing a host in the TLS config will determine what ends up in the cert's subjectAltNames
+    - hosts:
+        - web.kube.5570w.rconway.uk
+      secretName: myserver-tls # < cert-manager will store the created certificate in this secret.

@@ -13,8 +13,8 @@ trap onExit EXIT
 
 # Cluster
 k3d cluster create "${CLUSTER_NAME}" \
-  -p "9080:80@loadbalancer" \
-  -p "9443:443@loadbalancer" \
+  -p "80:80@loadbalancer" \
+  -p "443:443@loadbalancer" \
   --k3s-server-arg --disable=traefik \
   --agents 1 --agents-memory 8G \
   --kubeconfig-update-default=false \
@@ -31,3 +31,10 @@ export KUBECONFIG="${PWD}/kubernetes/kube_config_cluster.yml"
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
 helm install ingress-nginx ingress-nginx/ingress-nginx
+
+# Cert Manager
+helm repo add jetstack https://charts.jetstack.io
+helm install cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --set installCRDs=true
