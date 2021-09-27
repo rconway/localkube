@@ -11,6 +11,9 @@ onExit() {
 }
 trap onExit EXIT
 
+# Default kube config
+export KUBECONFIG=
+
 # Cluster
 k3d cluster create "${CLUSTER_NAME}" \
   -p "80:80@loadbalancer" \
@@ -22,11 +25,7 @@ k3d cluster create "${CLUSTER_NAME}" \
   # --agents 1 --agents-memory 8G \
 
 # Config
-mkdir -p kubernetes
-k3d kubeconfig get "${CLUSTER_NAME}" >kubernetes/kube_config_cluster.yml
-chmod 600 kubernetes/kube_config_cluster.yml
-kubemerge
-export KUBECONFIG="${PWD}/kubernetes/kube_config_cluster.yml"
+k3d kubeconfig merge "${CLUSTER_NAME}" -d -s
 
 # Nginx Ingress Controller
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
