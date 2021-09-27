@@ -16,9 +16,10 @@ k3d cluster create "${CLUSTER_NAME}" \
   -p "80:80@loadbalancer" \
   -p "443:443@loadbalancer" \
   --k3s-server-arg --disable=traefik \
-  --agents 1 --agents-memory 8G \
+  --agents 1 \
   --kubeconfig-update-default=false \
   --wait
+  # --agents 1 --agents-memory 8G \
 
 # Config
 mkdir -p kubernetes
