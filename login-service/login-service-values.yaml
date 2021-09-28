@@ -24,7 +24,7 @@ global:
 nginx:
   ingress:
     annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-production
+      cert-manager.io/cluster-issuer: letsencrypt-staging
     hosts:
       - test.kube.5570w.rconway.uk
     tls:
