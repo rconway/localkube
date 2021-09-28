@@ -19,3 +19,6 @@ k3d cluster create "${CLUSTER_NAME}" \
   --k3s-server-arg --disable=traefik \
   --agents 1 \
   --wait
+
+# Merge config to default location
+KUBECONFIG= k3d kubeconfig merge eoepca -d -s
