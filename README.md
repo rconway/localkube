@@ -21,5 +21,5 @@ Full setup script that performs:
 
 Run the script `eoepca.sh [<cluster-name>]` - `<cluster-name>` defaults to `eoepca`...
 ```
-$ ./create-cluster.sh
+$ ./eoepca.sh
 ```
