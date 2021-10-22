@@ -16,7 +16,7 @@ echo -e "\nCreate cluster with k3d..."
 k3d cluster create "${CLUSTER_NAME}" \
   -p "80:80@loadbalancer" \
   -p "443:443@loadbalancer" \
-  --k3s-server-arg --disable=traefik \
+  --k3s-arg "--disable=traefik@server:0" \
   --agents 1 \
   --wait
 
