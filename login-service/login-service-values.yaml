@@ -2,7 +2,7 @@ volumeClaim:
   name: eoepca-userman-pvc
   create: false
 config:
-  domain: test.kube.5570w.rconway.uk
+  domain: test.172.17.0.1.nip.io
   volumeClaim:
     name: eoepca-userman-pvc
 opendj:
@@ -19,15 +19,26 @@ oxtrust:
   volumeClaim:
     name: eoepca-userman-pvc
 global:
-  domain: test.kube.5570w.rconway.uk
+  domain: test.172.17.0.1.nip.io
   nginxIp: 172.17.0.1
 nginx:
   ingress:
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-staging
+    # annotations:
+    #   cert-manager.io/cluster-issuer: letsencrypt-staging
+    # hosts:
+    #   - test.172.17.0.1.nip.io
+    # tls:
+    #   - hosts:
+    #       - test.172.17.0.1.nip.io
+    #     secretName: login-service-tls
+    enabled: true
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    path: /
     hosts:
-      - test.kube.5570w.rconway.uk
-    tls:
-      - hosts:
-          - test.kube.5570w.rconway.uk
-        secretName: login-service-tls
+      - test.172.17.0.1.nip.io
+    tls: 
+    - secretName: tls-certificate
+      hosts:
+        - test.172.17.0.1.nip.io
