@@ -11,4 +11,4 @@ trap onExit EXIT
 
 ACTION="${@:-template}"
 
-helm ${ACTION} --version 0.9.2 --values dummy-service-values.yaml dummy-service eoepca/dummy
+helm -n test ${ACTION} --create-namespace --version 0.9.2 --values dummy-service-values.yaml dummy-service eoepca/dummy

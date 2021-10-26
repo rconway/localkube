@@ -11,4 +11,4 @@ trap onExit EXIT
 
 ACTION="${@:-template}"
 
-helm ${ACTION} --version 0.9.23 --values login-service-values.yaml um-login-service eoepca/login-service
+helm ${ACTION} --create-namespace --version 0.9.23 --values login-service-values.yaml um-login-service eoepca/login-service

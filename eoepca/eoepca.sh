@@ -22,5 +22,10 @@ helm repo add eoepca https://eoepca.github.io/helm-charts
 echo -e "\nstorage..."
 ./storage/storage.sh
 
-# echo -e "\nDeploy login-service..."
-# ./login-service/login-service.sh upgrade -i
+# dummy-service
+echo -e "\nDeploy dummy-service..."
+./dummy-service/dummy-service.sh upgrade -i
+
+# login-service
+echo -e "\nDeploy login-service..."
+./login-service/login-service.sh upgrade -i
