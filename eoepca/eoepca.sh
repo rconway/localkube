@@ -16,7 +16,7 @@ trap onExit EXIT
 
 # EOEPCA helm chart repository
 echo -e "\neoepca helm repo..."
-helm repo add eoepca https://eoepca.github.io/helm-charts/
+helm repo add eoepca https://eoepca.github.io/helm-charts
 
 # storage
 echo -e "\nstorage..."
