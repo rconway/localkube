@@ -32,3 +32,6 @@ export KUBECONFIG=$(k3d kubeconfig write "${CLUSTER_NAME}")
 
 # Cluster Issuer
 ./letsencrypt/letsencrypt.sh
+
+# Sealed Secrets
+./sealed-secrets.sh "${CLUSTER_NAME}"
