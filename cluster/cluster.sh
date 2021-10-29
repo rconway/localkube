@@ -35,3 +35,6 @@ export KUBECONFIG=$(k3d kubeconfig write "${CLUSTER_NAME}")
 
 # Sealed Secrets
 ./sealed-secrets.sh "${CLUSTER_NAME}"
+
+# Minio
+./minio/minio.sh
