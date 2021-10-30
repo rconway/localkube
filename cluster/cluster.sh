@@ -15,13 +15,15 @@ trap onExit EXIT
 ./install-k3d.sh
 
 # kubernetes cluster
-echo -e "\nCreate cluster with k3d..."
-k3d cluster create "${CLUSTER_NAME}" \
-  -p "80:80@loadbalancer" \
-  -p "443:443@loadbalancer" \
-  --k3s-arg "--disable=traefik@server:0" \
-  --agents 1 \
-  --wait
+if ! k3d cluster list "${CLUSTER_NAME}" >/dev/null 2>&1; then
+  echo -e "\nCreate cluster with k3d..."
+  k3d cluster create "${CLUSTER_NAME}" \
+    -p "80:80@loadbalancer" \
+    -p "443:443@loadbalancer" \
+    --k3s-arg "--disable=traefik@server:0" \
+    --agents 1 \
+    --wait
+fi
 export KUBECONFIG=$(k3d kubeconfig write "${CLUSTER_NAME}")
 
 # Ingress controller
