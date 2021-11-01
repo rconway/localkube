@@ -14,3 +14,5 @@ apiIngress:
 
 persistence:
   storageClass: local-path
+
+defaultBuckets: "eoepca, fredbob"
