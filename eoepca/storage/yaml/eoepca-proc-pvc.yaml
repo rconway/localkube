@@ -4,8 +4,8 @@ metadata:
   name: eoepca-proc-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
-  storageClassName: local-path
+    - ReadWriteMany
+  storageClassName: standard
   resources:
     requests:
       storage: 5Gi

@@ -5,14 +5,14 @@ auth:
 ingress:
   enabled: true
   ingressClassName: nginx
-  hostname: minio-console.172.17.0.1.nip.io
+  hostname: minio-console.192.168.49.123.nip.io
 
 apiIngress:
   enabled: true
   ingressClassName: nginx
-  hostname: minio.172.17.0.1.nip.io
+  hostname: minio.192.168.49.123.nip.io
 
 persistence:
-  storageClass: local-path
+  storageClass: standard
 
-defaultBuckets: "eoepca, fredbob"
+defaultBuckets: "eoepca"

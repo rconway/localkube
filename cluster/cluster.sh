@@ -11,23 +11,11 @@ onExit() {
 }
 trap onExit EXIT
 
-# minikube
-./install-minikube.sh
+# # minikube
+# ./install-minikube.sh
 
-# kubernetes cluster
-if ! k3d cluster list "${CLUSTER_NAME}" >/dev/null 2>&1; then
-  echo -e "\nCreate cluster with k3d..."
-  k3d cluster create "${CLUSTER_NAME}" \
-    -p "80:80@loadbalancer" \
-    -p "443:443@loadbalancer" \
-    --k3s-arg "--disable=traefik@server:0" \
-    --agents 1 \
-    --wait
-fi
-export KUBECONFIG=$(k3d kubeconfig write "${CLUSTER_NAME}")
-
-# Ingress controller
-./nginx-ingress-controller.sh
+# # kubernetes cluster
+# ./setup-cluster.sh
 
 # Certificate manager
 ./certificate-manager.sh

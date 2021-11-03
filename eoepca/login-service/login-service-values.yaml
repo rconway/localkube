@@ -2,7 +2,7 @@ volumeClaim:
   name: eoepca-userman-pvc
   create: false
 config:
-  domain: auth.172.17.0.1.nip.io
+  domain: auth.192.168.49.123.nip.io
   volumeClaim:
     name: eoepca-userman-pvc
 opendj:
@@ -19,17 +19,17 @@ oxtrust:
   volumeClaim:
     name: eoepca-userman-pvc
 global:
-  domain: auth.172.17.0.1.nip.io
-  nginxIp: 172.17.0.1
+  domain: auth.192.168.49.123.nip.io
+  nginxIp: 192.168.49.123
 nginx:
   ingress:
     # annotations:
     #   cert-manager.io/cluster-issuer: letsencrypt-staging
     # hosts:
-    #   - auth.172.17.0.1.nip.io
+    #   - auth.192.168.49.123.nip.io
     # tls:
     #   - hosts:
-    #       - auth.172.17.0.1.nip.io
+    #       - auth.192.168.49.123.nip.io
     #     secretName: login-service-tls
     enabled: true
     annotations: {}
@@ -37,8 +37,8 @@ nginx:
       # kubernetes.io/tls-acme: "true"
     path: /
     hosts:
-      - auth.172.17.0.1.nip.io
+      - auth.192.168.49.123.nip.io
     tls: 
     - secretName: tls-certificate
       hosts:
-        - auth.172.17.0.1.nip.io
+        - auth.192.168.49.123.nip.io
