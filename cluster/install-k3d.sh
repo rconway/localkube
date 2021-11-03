@@ -11,8 +11,8 @@ trap onExit EXIT
 
 echo "Installing k3d..."
 if ! hash k3d >/dev/null 2>&1; then
-  echo "Installing k3d..."
   curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash
+  echo "  [done]"
 else
   echo "  [skip] already installed"
 fi

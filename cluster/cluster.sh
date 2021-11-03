@@ -11,8 +11,8 @@ onExit() {
 }
 trap onExit EXIT
 
-# k3d
-./install-k3d.sh
+# minikube
+./install-minikube.sh
 
 # kubernetes cluster
 if ! k3d cluster list "${CLUSTER_NAME}" >/dev/null 2>&1; then
